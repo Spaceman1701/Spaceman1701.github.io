@@ -1,7 +1,6 @@
 ---
 layout: post
 title: My New Blog!
-permalink: https://spaceman1701.github.io/2016-10-03-My-New-Blog.html
 ---
 I decided I should probably have something that documents the hot mess that is my [GitHub](https://github.com/) so I created this blog. I think I'll use this blog to write about projects that I'm working on in my free time (and maybe some for school). 
 
