@@ -14,7 +14,7 @@ layout: default
     {% for post in site.related_posts limit:3 %}
       <li>
         <h3>
-          <a href="https://spaceman1701.github.io/ {{post.permalink}}">
+          <a href="{{post.permalink}}">
             {{ post.title }}
             <small>{{ post.date | date_to_string }}</small>
           </a>
