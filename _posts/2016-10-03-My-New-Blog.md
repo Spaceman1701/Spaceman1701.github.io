@@ -12,6 +12,6 @@ Oh and,
 {% highlight c++ %}
 #include <iostream>
 void main() {
-std::cout << "hello world!" << std::endl;
+	std::cout << "hello world!" << std::endl;
 }
 {% endhighlight %}
