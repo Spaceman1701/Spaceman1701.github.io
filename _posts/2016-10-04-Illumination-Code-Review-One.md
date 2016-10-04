@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Illumination Engine Code Review: Part 1
+title: Illumination Code Review, Part 1
 ---
 ## Code Review Goals
 
