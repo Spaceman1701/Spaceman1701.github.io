@@ -10,8 +10,8 @@ The project I've been working on most recently is a C++ rendering engine (which 
 
 Oh and,
 {% highlight c++ %}
-	#include <iostream>
-	void main() {
-		std::cout << "hello world!" << std::endl;
-	}
+#include <iostream>
+void main() {
+	std::cout << "hello world!" << std::endl;
+}
 {% endhighlight %}
