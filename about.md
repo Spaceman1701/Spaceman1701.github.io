@@ -4,7 +4,7 @@ title: About
 published: true
 ---
 
-## What Even Is This Blog
+## What Even Is This Blog?
 Hopefully this will be a blog where I write about the projects I am working on.
 
 ## About Me
