@@ -6,7 +6,7 @@ relative_permalinks: false
 
 # Setup
 title:               Development and Stuff
-tagline:             'Ethan's development blog'
+tagline:             'Ethans development blog'
 description:         'A development blog for whatever projects I'm working on'
 url:                 http://lanyon.getpoole.com
 baseurl:             ''
