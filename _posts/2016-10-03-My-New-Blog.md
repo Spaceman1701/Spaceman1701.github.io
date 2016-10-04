@@ -1,7 +1,7 @@
 ---
-published: false
+layout: post
+title: My New Blog!
 ---
-## My New Blog! ##
 I decided I should probably have something that documents the hot mess that is my [GitHub](https://github.com/Spaceman1701%20GitHub) so I created this blog. I think I'll use this blog to write about projects that I'm working on in my free time (and maybe some for school). 
 
 I decided to use [GitHub Pages](https://pages.github.com/%20GitHub%20Pages) for my blog after [a friend of mine](https://dagronlund.github.io/%20a%20friend%20of%20mine) started his own blog the same way. I used a prebuilt theme and [Jekyll Now](https://github.com/barryclark/jekyll-now), instead of making a custom blog, so I didn't have much trouble setting anything up. I think I'll slowly work on customizing this theme (it is the [Lanyon](https://github.com/poole/lanyon) theme), but it works for now. 
