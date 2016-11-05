@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Quick Update
+permalink: /blog/:date/:title
 ---
 I haven&#39;t posted in a while, so I just wanted to give a quick update on what I&#39;m doing. I&#39;ve been pretty busy with school (lots of exams and projects) which has put me behind on my Illumination Code Review. Right now, it&#39;s not looking like I am going to have time to finish it for a while, and frankly, I&#39;m not sure if I ever will. As I have pointed out previously, the code is very tightly coupled and messy. This makes reviewing it very time consuming and it limits the value of doing the code review at all. I am not sure there is much more I can get out of the code review. At this point, I think part 1 is the only part that really matters. With that in mind, I have decided to cancel the remaining posts regarding the code review. I may start a new code review on another project I worked on previously (there are some android projects on my bitbucket that might be worthwhile), but for now I am going to focus on development updates for my current projects.
 
