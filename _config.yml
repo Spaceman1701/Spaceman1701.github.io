@@ -9,7 +9,6 @@ title:               'Development and Stuff'
 tagline:             'My development blog'
 description:         'A blog decumenting whatever projects I happen to be working on.'
 url:                 'spaceman1701.github.io/'
-permalink:           '/blog/:data/:title'
 baseurl:             ''
 paginate:            5
 
@@ -20,4 +19,4 @@ author:
   email:             fcspaceman@gmail.com
 
 # Custom vars
-version:             1.0.5
+version:             1.0.6
