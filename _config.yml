@@ -8,7 +8,7 @@ relative_permalinks: false
 title:               'Development and Stuff'
 tagline:             'My development blog'
 description:         'A blog decumenting whatever projects I happen to be working on.'
-url:                
+url:                 'spaceman1701.github.io/'
 #baseurl:             'spaceman1701.github.io/'
 paginate:            5
 
