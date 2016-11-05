@@ -13,5 +13,5 @@ My name is Ethan Hunter, and I'm currently a Computer Science student at Univers
 You can email me at fcspaceman@gmail.com
 
 <p class="message">
-  This blog uses the Lanyon theme for [Jekyll] (https://github.com/poole/lanyon). It's pretty cool!
+  This blog uses the [Lanyon](https://github.com/poole/lanyon/) theme for Jekyll. It's pretty cool!
 </p>
