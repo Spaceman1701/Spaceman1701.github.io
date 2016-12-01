@@ -64,8 +64,8 @@ Wall vertices can be defined by using absolute coordinates or by referencing a p
 However, the actual map loader turned out to be pretty messy. This was a product of my limited time, for the most part. I worked on map loading pretty late in the project, and I rushed through it a bit. The maploader.cpp file ended up being around 200 lines of code despite the simplicity of the file format it reads. If I had more time I may have tried to use a component based design to parse maps. Instead of a monolithic MapLoader, I could have used a WallLoader, SectorLoader, and VertexLoader class. At runtime these classes could be registered with the map loader and used to parse individual objects out of the file. This would have simplified the process of adding new objects to the file format – a process that is currently very difficult.
 
 Here is a sort of gross section of maploader.cpp
-{% highlight c++ %}
 
+{% highlight c++ %}
 MapLoader::LineData MapLoader::parseLine(std::vector&lt;string&gt;&amp; line, Sector\* sector, float wscale, std::vector&lt;Vector2&gt;&amp; vertices) {
 
  LineData ld;

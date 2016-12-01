@@ -11,7 +11,6 @@ After deciding to try Visual Studio&#39;s framework, I naturally went to [MSDN](
 The first thing I did was create a new Native Unit Test Project in visual studio. I configured it to be part of RenderingEngine&#39;s solution. Conveniently, Visual Studio automatically created ```stdafx.h```, ```targetver.h``` and ``unittest1.cpp``` . The ```unittest1.cpp``` already had the following code in it:
 
 {% highlight c++ %}
-
 #include &quot;stdafx.h&quot;
 
 #include &quot;CppUnitTest.h&quot;
@@ -39,7 +38,6 @@ namespace testUnitTest
  };
 
 }
-
 {% endhighlight %}
 
 This is the basic structure for writing unit tests.
