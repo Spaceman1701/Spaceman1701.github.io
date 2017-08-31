@@ -22,11 +22,11 @@ During the hackathon I was responsible for the actual neural net component of th
 Before I get into what went wrong, I&#39;ll go over what the project was. We used Python 3.6 and NumPy (though I didn&#39;t end up using NumPy for anything). The network is simple enough in theory: one Python file with a Network class.  The user can then create an instance of the class with the desired number of layers and their sizes. The class has a train function and a feed\_forward function. The train function takes the training data (in an awful format – but that&#39;s just a product of the time constraints) and trains the network using gradient decent backpropagation. The feed\_forward function takes input data and outputs the result of running it through the network.
 
 ```python
-    net = Network([784, 30, 10])
+net = Network([784, 30, 10])
 
-	net.train(data, 30, 10, 8)
-	
-	print(net.feed_forward(test_input))
+net.train(data, 30, 10, 8)
+
+print(net.feed_forward(test_input))
 ```
 
 *Example of the network in use*
@@ -36,18 +36,18 @@ While I originally wanted to approach the problem functionally, I didn&#39;t end
 It becomes a lot more clear how problematic this is when looking at the code for error calculation:
 
 ```python
-    def calc_error(self, expected):
-		if self.error and not self.needs_error:
-			return self.error
-		self.error = 0
-		self.bias_error = 0
-		if not self.outs:
-			self.error = (expected - self.value)
-		else:
-			self.error += sum([e.weight * e.target.calc_error(expected) for e in self.outs])
-			self.bias_error += self.bias * self.cost_derivative(expected)
-		self.needs_error = False
+def calc_error(self, expected):
+	if self.error and not self.needs_error:
 		return self.error
+	self.error = 0
+	self.bias_error = 0
+	if not self.outs:
+		self.error = (expected - self.value)
+	else:
+		self.error += sum([e.weight * e.target.calc_error(expected) for e in self.outs])
+		self.bias_error += self.bias * self.cost_derivative(expected)
+	self.needs_error = False
+	return self.error
 ```
 *Node.calc\_error(). Note: During the hackathon this did include bias offset calculation. It was removed in a failed attempt to fix a problem*
 
@@ -74,32 +74,32 @@ So, after doing some research, [I found a website](http://neuralnetworksanddeepl
 The Network class works pretty much exactly the same from the outside as it did before. However, internally it uses completely vectoredized operations. Just look at the new backpropagation function (the error calculation is just a few lines now, not its own function like in the hackathon version):
 
 ```python
-        def backpropagate(self, inputs, outputs):
-	        weights_offset = [Matrix(next_layer, current_layer).set_zero()
-	                        for next_layer, current_layer in zip(self.sizes[1:], self.sizes[:-1])]
-	        biases_offset = [Matrix(size, 1).set_zero() for size in self.sizes[1:]]
-	
-	        inputs_mat = Matrix.from_list(inputs)
-	        outputs_mat = Matrix.from_list(outputs)
-	
-	        activation_transfers = [inputs_mat]
-	        d_activations = [calc_d_sigmoid(inputs_mat)]
-	
-	        for layer in range(self.num_layers - 1):
-	            activation = self.calc_activation(layer, activation_transfers[-1])
-	            activation_transfers.append(calc_sigmoid(activation))
-	            d_activations.append(calc_d_sigmoid(activation_transfers[-1]))
-	
-	        error = calc_error(activation_transfers[-1], outputs_mat).entrywise_product(d_activations[-1])
-	        weights_offset[-1] = error * activation_transfers[-2].transpose()
-	        biases_offset[-1] = error
-	
-	        for layer in range(self.num_layers - 2, 1, -1):
-	            d_activation = d_activations[layer]
-	            error = (self.weights[layer + 1].transpose() * error).entrywise_product(d_activation)
-	            weights_offset[layer] = error * activation_transfers[layer - 1].transpose()
-	            biases_offset[layer] = error
-	        return weights_offset, biases_offset
+def backpropagate(self, inputs, outputs):
+	weights_offset = [Matrix(next_layer, current_layer).set_zero()
+					for next_layer, current_layer in zip(self.sizes[1:], self.sizes[:-1])]
+	biases_offset = [Matrix(size, 1).set_zero() for size in self.sizes[1:]]
+
+	inputs_mat = Matrix.from_list(inputs)
+	outputs_mat = Matrix.from_list(outputs)
+
+	activation_transfers = [inputs_mat]
+	d_activations = [calc_d_sigmoid(inputs_mat)]
+
+	for layer in range(self.num_layers - 1):
+		activation = self.calc_activation(layer, activation_transfers[-1])
+		activation_transfers.append(calc_sigmoid(activation))
+		d_activations.append(calc_d_sigmoid(activation_transfers[-1]))
+
+	error = calc_error(activation_transfers[-1], outputs_mat).entrywise_product(d_activations[-1])
+	weights_offset[-1] = error * activation_transfers[-2].transpose()
+	biases_offset[-1] = error
+
+	for layer in range(self.num_layers - 2, 1, -1):
+		d_activation = d_activations[layer]
+		error = (self.weights[layer + 1].transpose() * error).entrywise_product(d_activation)
+		weights_offset[layer] = error * activation_transfers[layer - 1].transpose()
+		biases_offset[layer] = error
+	return weights_offset, biases_offset
 ```
 
 This is obviously much more clear.  The first half of the function just initializes the necessary lists, does a simple forward propagation (the first for loop) while keeping track of some useful intermediary data and calculates the error for the output layer. The actual backpropagation algorithm is just one for loop with 4 lines of code in it at the end of the function (unfortunately, there&#39;s still  a bug in that piece of code, the network works best when it has only an input and output layer which is exactly when that code does not run).
