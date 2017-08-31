@@ -1,4 +1,4 @@
-# Released under MIT License
+# Lanyon Theme Released under MIT License
 
 Copyright (c) 2014 Mark Otto.
 
