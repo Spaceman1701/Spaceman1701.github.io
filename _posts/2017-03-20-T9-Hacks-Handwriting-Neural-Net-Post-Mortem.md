@@ -21,12 +21,13 @@ During the hackathon I was responsible for the actual neural net component of th
 
 Before I get into what went wrong, I&#39;ll go over what the project was. We used Python 3.6 and NumPy (though I didn&#39;t end up using NumPy for anything). The network is simple enough in theory: one Python file with a Network class.  The user can then create an instance of the class with the desired number of layers and their sizes. The class has a train function and a feed\_forward function. The train function takes the training data (in an awful format – but that&#39;s just a product of the time constraints) and trains the network using gradient decent backpropagation. The feed\_forward function takes input data and outputs the result of running it through the network.
 
+```python
     net = Network([784, 30, 10])
 
 	net.train(data, 30, 10, 8)
 	
 	print(net.feed_forward(test_input))
-
+```
 
 *Example of the network in use*
 
@@ -34,6 +35,7 @@ While I originally wanted to approach the problem functionally, I didn&#39;t end
 
 It becomes a lot more clear how problematic this is when looking at the code for error calculation:
 
+```python
     def calc_error(self, expected):
 		if self.error and not self.needs_error:
 			return self.error
@@ -46,7 +48,7 @@ It becomes a lot more clear how problematic this is when looking at the code for
 			self.bias_error += self.bias * self.cost_derivative(expected)
 		self.needs_error = False
 		return self.error
-
+```
 *Node.calc\_error(). Note: During the hackathon this did include bias offset calculation. It was removed in a failed attempt to fix a problem*
 
 There are probably a couple things that should jump out right away with this function. Firstly, the fact that there is only one argument is a bit odd. Since the function calculates the error from the node&#39;s calculated value and the expected value, it would make sense for the function to take two parameters, calculated (or activation) and expected. The reason is doesn&#39;t is because the node actually keeps the results of its last activation as a class field. The calc\_error function assumes that the eval function has already been called.
@@ -71,6 +73,7 @@ So, after doing some research, [I found a website](http://neuralnetworksanddeepl
 
 The Network class works pretty much exactly the same from the outside as it did before. However, internally it uses completely vectoredized operations. Just look at the new backpropagation function (the error calculation is just a few lines now, not its own function like in the hackathon version):
 
+```python
         def backpropagate(self, inputs, outputs):
 	        weights_offset = [Matrix(next_layer, current_layer).set_zero()
 	                        for next_layer, current_layer in zip(self.sizes[1:], self.sizes[:-1])]
@@ -97,7 +100,7 @@ The Network class works pretty much exactly the same from the outside as it did 
 	            weights_offset[layer] = error * activation_transfers[layer - 1].transpose()
 	            biases_offset[layer] = error
 	        return weights_offset, biases_offset
-
+```
 
 This is obviously much more clear.  The first half of the function just initializes the necessary lists, does a simple forward propagation (the first for loop) while keeping track of some useful intermediary data and calculates the error for the output layer. The actual backpropagation algorithm is just one for loop with 4 lines of code in it at the end of the function (unfortunately, there&#39;s still  a bug in that piece of code, the network works best when it has only an input and output layer which is exactly when that code does not run).
 
