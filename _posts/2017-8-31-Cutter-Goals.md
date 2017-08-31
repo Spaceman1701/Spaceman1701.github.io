@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cutter, A Minimal Java AOP Library (Part 1: Motivation and Goals) 
+title: Cutter, A Minimal Java AOP Library (Part 1 -  Motivation and Goals) 
 ---
 [Cutter](https://github.com/Spaceman1701/Cutter) is intended to be a fast and
 lightweight [aspect-oriented
