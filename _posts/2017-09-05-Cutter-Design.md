@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Cutter, A Minimal Java AOP Library (Part 2 -  High Level Design) 
 ---
 In [part 1](https://spaceman1701.github.io/2017/08/31/Cutter-Goals/), I described the motivation for Cutter and many of the broad design goals. This post is going to go in depth into Cutter's actual design. If you've read the previous post (and I suggest you do) or looked at the [Cutter](https://www.github.com/spaceman1701/cutter/) git repository, then you know that Cutter is implemented using [Java's Pluggable Annotation API](https://www.jcp.org/en/jsr/detail?id=269). There were two motivations for doing this: First, it allowed Cutter to be written using standard Java. Second, it allows Cutter to be used by simply placing the cutter-lib jar in the class-path.

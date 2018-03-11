@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: uP-8, my Ludum Dare 38 Game
 ---
 

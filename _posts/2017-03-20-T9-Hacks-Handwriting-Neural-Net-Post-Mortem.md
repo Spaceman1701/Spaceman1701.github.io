@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: T9 Hacks Handwriting Neural Net Post Mortem 
 ---
 

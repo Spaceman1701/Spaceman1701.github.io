@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Unit Testing in C++
 ---
 Recently I&#39;ve been working on my new [rendering engine](https://github.com/Spaceman1701/RenderingEngine). It&#39;s really the first big C++ project I&#39;ve even taken on, and as such I&#39;m learning how to manage the project as I go. I realized early on that I would need unit tests in to ensure I could actually locate and diagnose bugs. I&#39;ve dabbled in unit testing in Java before (see my sadly unfinished [poker engine](https://github.com/Spaceman1701/MonteCarloPoker)), but never for C or C++. This post will document my experience setting up unit tests for C++.

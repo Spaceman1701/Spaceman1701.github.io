@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Illumination Code Review, Part 1
 ---
 ## Code Review Goals

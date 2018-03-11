@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Project Updates and CSCI 1310 Project Post-Mortem
 ---
 # Project Updates
