@@ -75,6 +75,7 @@
   p,
   li,
   dl {
+    font-family: $serif;
     font-size: 1.05em;
     @include breakpoint($large) {
       font-size: $type-size-normal;
