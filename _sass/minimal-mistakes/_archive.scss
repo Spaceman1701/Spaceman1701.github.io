@@ -22,7 +22,7 @@
   padding-bottom: 0.5em;
   font-size: $type-size-5;
   color: $muted-text-color;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 2px solid $border-color;
 
   + .list__item .archive__item-title {
     margin-top: 0.5em;
@@ -57,6 +57,7 @@
 .archive__item-excerpt {
   margin-top: 0;
   font-size: $type-size-6;
+  font-family: $serif;
 
   & + p {
     text-indent: 0;
