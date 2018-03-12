@@ -40,6 +40,7 @@ $type-size-3: 1.563em !default; // ~25.008px
 $type-size-4: 1.25em !default; // ~20px
 $type-size-5: 1.1em !default; // ~16px
 $type-size-6: 1.0em !default; // ~12px
+$type-size-normal: 0.85em !default;
 $type-size-6b: 0.75em !default;
 $type-size-7: 0.6875em !default; // ~11px
 $type-size-8: 0.625em !default; // ~10px
@@ -141,6 +142,10 @@ $x-large: 1280px !default;
 $right-sidebar-width-narrow: 200px !default;
 $right-sidebar-width: 300px !default;
 $right-sidebar-width-wide: 400px !default;
+
+$right-sidebar-corrector-narrow: 50px !default;
+$right-sidebar-corrector: 100px !default;
+$right-sidebar-corrector-narrow: 100px !default;
 
 /*
    Other

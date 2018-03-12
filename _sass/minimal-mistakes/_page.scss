@@ -24,12 +24,12 @@
   @include breakpoint($large) {
     float: right;
     width: calc(100% - #{$right-sidebar-width-narrow});
-    padding-right: $right-sidebar-width-narrow;
+    padding-right: calc(#{$right-sidebar-width-narrow} - #{$right-sidebar-corrector-narrow});
   }
 
   @include breakpoint($x-large) {
     width: calc(100% - #{$right-sidebar-width});
-    padding-right: $right-sidebar-width;
+    padding-right: calc(#{$right-sidebar-width} - #{$right-sidebar-corrector});
   }
 
   .page__inner-wrap {
@@ -75,7 +75,18 @@
   p,
   li,
   dl {
-    font-size: 1em;
+    font-size: 1.05em;
+    @include breakpoint($large) {
+      font-size: $type-size-normal;
+    }
+  }
+
+  li li,
+  li ul,
+  ul li ul,
+  li p
+  {
+    font-size: 1.00em //css was a mistake
   }
 
   /* paragraph indents */

@@ -154,7 +154,9 @@ Another potentially overlooked advantage to this scheme is consistency: A Pointc
  1. Compile-time "require annotations" - Soon there will be a `@RequiredAnnotations` annotation for Advice objects to allow compile-time checks that ensure required parameters exist
  2. Improved compile-time performance - Currently `cutter-compile` walks the entire AST to finds Cuts. This can be replaced with standard annotation processing API calls to find annotated methods.
  3. Better Anonymous Inner Class handling - Currently limitations in the Pluggable Annotation Processing API make it nearly impossible to detect Anonymous Inner Classes. This means that Cuts placed on Anonymous Inner Class methods don't get detected. They should at least cause a compiler error.
+
 # Further Details
+
 ## Advice vs Parameter Domains
 Early I claimed that there are separate "advice" and "parameter" domains for advices and advice parameters. This claims is based on the idea that advice parameters are really just meta-data about a particular Joinpoint and not really part of the advice. In theory, this generally holds true. Going back to the caching example, a unique-key argument for a cache is really a property of the Joinpoint. The fact that a method argument is unique for unique outputs has nothing to do with caching. However, in practice, the lines are somewhat blurry. For example, when using a unique-key for caching, it would be most clear to define a `CacheParams` annotation rather then several annotations that describe the Joinpoint in a more abstract way. Furthermore, the idea of a cache key is tightly coupled with the idea of a cache. So in practice a `unique-key` is tied to the domain of the actual cache (which would likely be implemented as an `Advice`.
 

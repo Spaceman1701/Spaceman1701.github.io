@@ -75,30 +75,28 @@ What Cutter is not:
 -   A feature-for-feature competitor with AspectJ (or Spring)
 
     -   Cutter is intended to be small and lightweight. AspectJ and Spring will
-        always do more than Cutter does, and that’s okay.
+        always do more than Cutter does, and that’s okay. Some of the major features Cutter will probably never have:
 
-        -   Some of the major features Cutter will probably never have:
+        -   Almost everything in Spring AOP
 
-            -   Anything in Spring that’s no Spring AOP
+            -   Philosophically cutter-lib will never have the same complex
+                features as Spring (though many of them will be possible to
+                implement in Cutter-based libraries)
 
-                -   Philosophically cutter-lib will never have the same complex
-                    features as Spring (though many of them will be possible to
-                    implement in Cutter-based libraries)
+        -   Pointcuts defined away from the declaration-site
 
-            -   Pointcuts defined away from the declaration-site
+            -   While this may change in the future, right now Cutter is
+                focused on Pointcuts defined with “Cut” annotations directly
+                at the method declaration they target. This ensures that
+                Pointcuts are always defined explicitly
 
-                -   While this may change in the future, right now Cutter is
-                    focused on Pointcuts defined with “Cut” annotations directly
-                    at the method declaration they target. This ensures that
-                    Pointcuts are always defined explicitly
+            -   It is possible, however, to write a Cutter-based library
+                that adds this feature
 
-                -   It is possible, however, to write a Cutter-based library
-                    that adds this feature
+        -   Pointcuts targeting fields
 
-            -   Pointcuts targeting fields
-
-                -   This probably indicates bad design anyway (And violates
-                    basic Java design principles).
+            -   This probably indicates bad design anyway (And violates
+                basic Java design principles).
 
 -   A “true” aspect-oriented programming framework
 
