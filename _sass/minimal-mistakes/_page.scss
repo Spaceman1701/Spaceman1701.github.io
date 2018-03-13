@@ -67,6 +67,9 @@
 }
 
 .page__content {
+  background-color: white;
+  box-shadow: 4px 1px 4px 1px rgba(1, 1, 1, 0.1);
+  padding: 1.5em;
   h2 {
     padding-bottom: 0.5em;
     border-bottom: 1px solid $border-color;
