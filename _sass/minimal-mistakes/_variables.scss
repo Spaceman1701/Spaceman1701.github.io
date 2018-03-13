@@ -17,7 +17,7 @@ $serif: Georgia, Times, serif !default;
 // $sans-serif: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
 //   "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
 $sans-serif: "Helvetica", sans-serif !default;
-$monospace: Monaco, Consolas, "Lucida Console", monospace !default;
+$monospace: monospace !default;
 
 /* sans serif typefaces */
 $sans-serif-narrow: $sans-serif !default;
@@ -41,7 +41,7 @@ $type-size-3: 1.563em !default; // ~25.008px
 $type-size-4: 1.25em !default; // ~20px
 $type-size-5: 1.1em !default; // ~16px
 $type-size-6: 1.0em !default; // ~12px
-$type-size-normal: 1em !default;
+$type-size-normal: 0.9em !default;
 $type-size-6b: 0.75em !default;
 $type-size-7: 0.6875em !default; // ~11px
 $type-size-8: 0.625em !default; // ~10px
