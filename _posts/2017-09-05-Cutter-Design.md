@@ -30,17 +30,18 @@ And covert's it to:
 ```java
 /* The code that gets compiled */
 class Foo {
-	int bar(String name) {
-		ExampleAdvice advice = new ExampleDevice(...);
-		if (advice.before()) {
-			return advice.after(__wrapped_bar(advice.getParameterValue(0)));
-		}
-		return advice.onSkip();
-	}
-	
-	int __wrapped__bar(String name) {
-		return name.length();
-	}
+    int bar(String name) {
+        ExampleAdvice advice = new ExampleDevice(...);
+        if (advice.before()) {
+            return advice.after(__wrapped_bar(advice.getParameterValue(0)));
+        }
+        return advice.onSkip();
+    }
+
+    int __wrapped__bar(String name) {
+        return name.length();
+    }
+}
 ```
 Cutter also has a fairly simple (and still changing) packaging scheme. Cutter has two artifacts `cutter-compile` and `cutter-lib`. Cutter-compile contains all the necessary components for the annotation processor (and the annotation processor itself). Cutter-lib is full library that contains the META-INF entry for the Cutter annotation processor and some basic extension classes (like VoidAdvice for convenient use of Cuts on void methods). This packaging scheme is designed with two priorities. The first is that the each package has its own domain. The second is to place roadblocks up to protected from feature-creep. Adding a feature to `cutter-compile` requires explicit thought and ceremony. This forces me (and maybe other developers in the future) to actually think about what's being added to the compile library.
 # Problems With the Design
@@ -49,13 +50,13 @@ Lets first work out the hand-waviness and come up with a more specific example:
  The original class:
 ```java
 class Foo {
-	@Cut(ExampleAdvice.class)
-	int doBar(String bar, int i, float f, Object o) {
-		System.out.println("bar is: " + bar);
-		System.out.println("i is: " + i);
-		System.out.println("f is: " + f);
-		System.out.println("o is: " + o);
-	}
+    @Cut(ExampleAdvice.class)
+    int doBar(String bar, int i, float f, Object o) {
+        System.out.println("bar is: " + bar);
+        System.out.println("i is: " + i);
+        System.out.println("f is: " + f);
+        System.out.println("o is: " + o);
+    }
 }
 ```
 After Cutter runs:
