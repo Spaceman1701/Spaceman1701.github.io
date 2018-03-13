@@ -61,30 +61,30 @@ class Foo {
 After Cutter runs:
 ```java
 class Foo {
-	int doBar(String bar, int i, float f, Object o) {
-		ExampleAdvice advice = new ExampleDevice(
-			Cut.Utils.getJoinPoint(Foo.class, "doBar");
-			Cut.Utils.getParameterArray(new Object[]{"bar", String.class, bar,
-						 "i", int.class, i,
-						 "f", float.class, f,
-						 "o", Object.class, o})
-			);
-		if (advice.before()) {
-			return advice.after(__wrapped__doBar(
-				advice.getParameterValue(0),
-				advice.getParameterValue(1),
-				advice.getParameterValue(2)
-			);
-		}
-		return advice.onSkip();
-	}
-	
-	int __wrapped__doBar(String bar, int i, float f, Object o) {
-		System.out.println("bar is: " + bar);
-		System.out.println("i is: " + i);
-		System.out.println("f is: " + f);
-		System.out.println("o is: " + o);
-	}
+    int doBar(String bar, int i, float f, Object o) {
+        ExampleAdvice advice = new ExampleDevice(
+            Cut.Utils.getJoinPoint(Foo.class, "doBar");
+            Cut.Utils.getParameterArray(new Object[]{"bar", String.class, bar,
+                            "i", int.class, i,
+                            "f", float.class, f,
+                            "o", Object.class, o})
+            );
+        if (advice.before()) {
+            return advice.after(__wrapped__doBar(
+                advice.getParameterValue(0),
+                advice.getParameterValue(1),
+                advice.getParameterValue(2)
+            );
+        }
+        return advice.onSkip();
+    }
+
+    int __wrapped__doBar(String bar, int i, float f, Object o) {
+        System.out.println("bar is: " + bar);
+        System.out.println("i is: " + i);
+        System.out.println("f is: " + f);
+        System.out.println("o is: " + o);
+    }
 }
 ```
 Now that the hand-waviness has been taken care of, this is now a good detailed example of how Cutter works. One abnormal aspect of the above code is the two method calls to `Cut.Utils`. `Cut.Utils` is a static class that is defined inside the `Cut` annotation. All the methods do is return a `JoinPoint` object and an array of `Parameter` objects. These objects aren't created directly for two reasons:
@@ -107,13 +107,13 @@ Another possible point of confusion is the handling of Cuts placed on overriden 
 For example:
 ```java
 class Parent {
-	@Cut(Bar.class)
-	public void foo() {}
+    @Cut(Bar.class)
+    public void foo() {}
 }
 class OverrideChild() extends Parent {
-	@Cut(OtherBar.class) {}
-	@Override
-	public void foo() {}
+    @Cut(OtherBar.class) {}
+    @Override
+    public void foo() {}
 }
 class EmptyChild() extends Parent{
 }
