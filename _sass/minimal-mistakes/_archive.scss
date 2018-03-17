@@ -29,12 +29,21 @@
   }
 }
 
+.list__item {
+  background-color: white;
+  box-shadow: 4px 1px 4px 1px rgba(1, 1, 1, 0.1);
+  padding: 0.001em 1em 0.001em 1em;
+  margin-top: 10px;
+}
+
 .archive__item-title {
   margin-bottom: 0.25em;
   font-family: $sans-serif-narrow;
   line-height: initial;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  margin-top: 0.7em;
 
   a {
     color: inherit;
