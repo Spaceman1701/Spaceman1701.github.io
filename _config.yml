@@ -258,4 +258,4 @@ defaults:
       comments: false
       share: false
       related: true
-      permalink: :year/:month/:day/:slug/
+      permalink: :year/:month/:day/:title/
