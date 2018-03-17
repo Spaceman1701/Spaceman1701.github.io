@@ -9,10 +9,10 @@ minimal_mistakes_skin    : "dirt" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Development and Stuff"
+title                    : "A Waste of Packets"
 title_separator          : "-"
 name                     : "Ethan Hunter"
-description              : "My development blog"
+description              : "Ethan Hunter's development blog"
 url                      : "https://spaceman1701.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "Spaceman1701/spaceman1701.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
