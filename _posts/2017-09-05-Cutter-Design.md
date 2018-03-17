@@ -7,7 +7,7 @@ In [part 1]({% post_url 2017-08-31-Cutter-Goals %}), I described the motivation 
 While the Java Pluggable Annotation API is very powerful, it has some major limitations. The biggest of which is that it doesn't explicitly allow for existing Java files to be modified. This poses a major problem for a library like Cutter because of the requirement that Cutter integrates seamlessly. This means that the user shouldn't be expected to do anything special with their code to use Cutter. It also means the Cutter shouldn't interfere with debugging or interoperability. 
 
 Fortunately, the people behind [Project Lombok](https://projectlombok.org/) discovered that (at least in Oracle JDKs) changes made to the Abstract Syntax Tree during the annotation processing phase are reflected in the compiled code. This allows for arbitrary modification of Java files before compilation. Unfortunately, the Sun Tree APIs are poorly documented and difficult to use. The difficulty is compounded by the fact that in Cutter, a Cut must be invisible to at both the declaration and call site.
-# High Level Design
+## High Level Design
 The key design goal of Cutter from a user-facing standpoint is that code that calls a Cut method should not have to know anything about the Cut. Furthermore, external libraries that call Cut code may not be able to be changed to know about the Cut.
 
 This makes call site mutation very unrealistic. At best, a solution based on call site manipulation would require slowly searching out every reference to a Cut method and making appropriate modifications. At worst it's completely impossible because the calling code is already compiled. 
@@ -44,7 +44,7 @@ class Foo {
 }
 ```
 Cutter also has a fairly simple (and still changing) packaging scheme. Cutter has two artifacts `cutter-compile` and `cutter-lib`. Cutter-compile contains all the necessary components for the annotation processor (and the annotation processor itself). Cutter-lib is full library that contains the META-INF entry for the Cutter annotation processor and some basic extension classes (like VoidAdvice for convenient use of Cuts on void methods). This packaging scheme is designed with two priorities. The first is that the each package has its own domain. The second is to place roadblocks up to protected from feature-creep. Adding a feature to `cutter-compile` requires explicit thought and ceremony. This forces me (and maybe other developers in the future) to actually think about what's being added to the compile library.
-# Problems With the Design
+## Problems With the Design
 Now, if you've been paying attention, you may have come up with a laundry list of issues with the design I just laid out. Beyond that, the example code I wrote above has some concerning hand-wavy "..."s in it. Seems problematic.
 Lets first work out the hand-waviness and come up with a more specific example:
  The original class:
@@ -150,19 +150,19 @@ There may also be a lot of benefit in allowing parameters to be passed through s
 This pattern allows Cutter to leverage powerful Java APIs like the annotation processor API without adding any complexity to Cutter itself. I was able to implement custom behavior that is enforced at compile-time using only standard Java code.
 
 Another potentially overlooked advantage to this scheme is consistency: A Pointcut is always defined by an `@Cut`. Other schemes would have custom annotations for different Pointcuts or different Advice, which has the potential to become confusing.
-# Future Work
+## Future Work
 
  1. Compile-time "require annotations" - Soon there will be a `@RequiredAnnotations` annotation for Advice objects to allow compile-time checks that ensure required parameters exist
  2. Improved compile-time performance - Currently `cutter-compile` walks the entire AST to finds Cuts. This can be replaced with standard annotation processing API calls to find annotated methods.
  3. Better Anonymous Inner Class handling - Currently limitations in the Pluggable Annotation Processing API make it nearly impossible to detect Anonymous Inner Classes. This means that Cuts placed on Anonymous Inner Class methods don't get detected. They should at least cause a compiler error.
 
-# Further Details
+## Further Details
 
-## Advice vs Parameter Domains
+### Advice vs Parameter Domains
 Early I claimed that there are separate "advice" and "parameter" domains for advices and advice parameters. This claims is based on the idea that advice parameters are really just meta-data about a particular Joinpoint and not really part of the advice. In theory, this generally holds true. Going back to the caching example, a unique-key argument for a cache is really a property of the Joinpoint. The fact that a method argument is unique for unique outputs has nothing to do with caching. However, in practice, the lines are somewhat blurry. For example, when using a unique-key for caching, it would be most clear to define a `CacheParams` annotation rather then several annotations that describe the Joinpoint in a more abstract way. Furthermore, the idea of a cache key is tightly coupled with the idea of a cache. So in practice a `unique-key` is tied to the domain of the actual cache (which would likely be implemented as an `Advice`.
 
 While I do believe there are two domains for advice and advice parameters, the actual usefulness of this should be taken with a grain of salt, I guess.
-## API Readability
+### API Readability
 There are some best practices which can significantly reduce the extra clutter from needing a second "parameters annotation." 
 
 By convention, parameters annotations should be named following the pattern `xxxParams`. This makes it immediately clear why the annotation is present. (Example `CacheParams`).
