@@ -39,13 +39,15 @@
     margin-right: 0;
     width: 100%;
     clear: both;
-
+    background-color: white;
+    box-shadow: 4px 1px 4px 1px rgba(1, 1, 1, 0.1);
+    padding: 0.9em;
+    @include breakpoint($medium) {
+      padding: 1.5em;
+    }
     .page__content,
     .page__meta,
     .page__share {
-      background-color: white;
-      box-shadow: 4px 1px 4px 1px rgba(1, 1, 1, 0.1);
-      padding: 1.5em;
       position: relative;
       float: left;
       margin-left: 0;
