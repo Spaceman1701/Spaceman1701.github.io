@@ -1,6 +1,7 @@
 ---
 layout: single
 title: Cutter, A Minimal Java AOP Library (Part 1 -  Motivation and Goals)
+tags: ["Java", "Aspect Oriented Programming", "Architecture", "Project", "Cutter"]
 ---
 [Cutter](https://github.com/Spaceman1701/Cutter) is intended to be a fast and
 lightweight [aspect-oriented

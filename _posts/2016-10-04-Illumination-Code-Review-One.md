@@ -1,6 +1,7 @@
 ---
 layout: single
 title: Illumination Code Review, Part 1
+tags: ["Java", "Project", "Architecture", "Graphics"]
 ---
 ## Code Review Goals
 

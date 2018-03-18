@@ -1,6 +1,7 @@
 ---
 layout: single
-title: T9 Hacks Handwriting Neural Net Post Mortem 
+title: T9 Hacks Handwriting Neural Net Post Mortem
+tags: ["Misc", "Hackathon", "Project", "Machine Learning"]
 ---
 
 I&#39;ve been busy really lately so I haven&#39;t had a lot of time to work on any of my projects or write any posts. However, a couple weeks ago I did get a chance to participate in the T9Hacks Hackathon sponsored by Major League Hacks. It was a really great experience and I wanted to write a post about the project my team worked on.

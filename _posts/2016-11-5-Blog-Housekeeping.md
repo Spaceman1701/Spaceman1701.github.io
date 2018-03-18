@@ -1,6 +1,7 @@
 ---
 layout: single
 title: Blog Housekeeping
+tags: ["Misc", "Status"]
 ---
 It occurred to me early this week that my blog was a bit of a mess. Since I created the blog, I have been having problems with the permanent links to individual posts. After my last post, I noticed that some of the links were linking to unformatted pages. Today I noticed that the title link was broken as well. I decided today was as good of a day as any to clean it up and fix everything, so I did.
 

@@ -1,6 +1,7 @@
 ---
 layout: single
 title: Project Updates and CSCI 1310 Project Post-Mortem
+tags: ["Misc", "Status", "C++", "Project"]
 ---
 # Project Updates
 

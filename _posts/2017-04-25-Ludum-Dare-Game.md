@@ -1,6 +1,7 @@
 ---
 layout: single
 title: uP-8, my Ludum Dare 38 Game
+tags: ["Misc", "Project"]
 header:
     image: /assets/images/2017-04-25-Ludum-Dare-Game/header-image.png
 ---

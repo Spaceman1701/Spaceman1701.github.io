@@ -1,6 +1,7 @@
 ---
 layout: single
 title: My New Blog!
+tags: ["Misc", "Status"]
 ---
 I decided I should probably have something that documents the hot mess that is my [GitHub](https://github.com/) so I created this blog. I think I'll use this blog to write about projects that I'm working on in my free time (and maybe some for school). 
 

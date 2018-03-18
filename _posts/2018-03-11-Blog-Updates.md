@@ -1,6 +1,7 @@
 ---
 layout: single
 title: Updated Blog!
+tags: ["Misc", "Status"]
 ---
 
 I finally am getting around to modernizing my this website. I've moved to a new, much more sophisticated theme for Jekyll
