@@ -10,3 +10,5 @@ take a while before everything is working well again. A lot of pages that I had 
 completely remade (like the "About" page), so those probably aren't going to be done for a while.
 
 For now, enjoy the new layout and all the fun new bugs that come with it.
+
+Oh, and I can finally use TeX in posts: $$ \sum^n_{i = 0} i = \frac{n(n + 1)}{2} $$
